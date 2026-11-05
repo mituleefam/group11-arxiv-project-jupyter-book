@@ -21,7 +21,7 @@ Danh sách đầy đủ và số lượng từng loại có ở [Chương 6](./0
 
 - Một số phiên bản arXiv trả HTTP 404 hoặc chỉ có PDF, nên không có mã nguồn. Các phiên bản này được ghi nhận, không bị bỏ qua.
 - Semantic Scholar chưa lập chỉ mục một số bài mới, hoặc có danh sách reference nhưng không chia sẻ. Ngày nộp arXiv của reference không phải lúc nào cũng có.
-- Mỗi thành viên crawl trên một runtime Colab riêng, có lúc bị ngắt và phải chạy tiếp, nên thời gian chạy được báo cáo theo từng lần chạy (invocation) và tổng hợp lại, không phải một lần chạy liền mạch duy nhất.
+- Các khoảng ID được crawl lần lượt trên một runtime Colab; do giới hạn 12 giờ, lượt chạy trải qua nhiều phiên và tiếp tục từ bản lưu, nên thời gian chạy được báo cáo theo từng bước (invocation) và cộng lại, không phải một lần chạy liền mạch duy nhất.
 
 ## 3. Chuẩn bị cho Milestone 2
 
