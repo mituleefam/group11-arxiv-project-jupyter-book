@@ -1,32 +1,33 @@
 ---
-title: "Chương 7: Tổng kết Milestone 1"
-short_title: "7. Tổng kết"
+title: "Chapter 7: Milestone 1 Conclusion"
+short_title: "7. Conclusion"
 ---
 
-## 1. Kết quả đạt được
+## 1. Achievements
 
-Nhóm đã xây dựng một pipeline crawl chạy lại được, mỗi thành viên dùng cùng một bộ code cho khoảng arXiv ID được giao của mình:
+The group built a reproducible crawling pipeline. The arXiv ID ranges of all five members were crawled one after another with the same code on a CPU-only Google Colab runtime, each range in its own data folder:
 
-- **Discovery và metadata** qua arXiv API: phân giải mọi ID được giao, xác định danh sách phiên bản của từng bài, lưu metadata theo đúng các cột của bảng `papers` (tiêu đề, tác giả, ngày nộp, các ngày sửa đổi, nơi công bố).
-- **Mã nguồn LaTeX của mọi phiên bản** từ `export.arxiv.org/src/<id>v<N>`: nhận diện định dạng thật của file, chỉ trích xuất `.tex`/`.bib` với nguyên đường dẫn tương đối, ghi bản ghi rỗng cho phiên bản PDF-only hoặc không có TeX.
-- **References** qua Semantic Scholar Graph API: giữ toàn bộ reference trong `references_all.json` và tách các reference có arXiv ID ra `references.json`, sẵn sàng chuyển thành bảng `references` ở Milestone 3.
-- **Độ tin cậy:** tuân thủ giới hạn request của arXiv và Semantic Scholar, retry theo lượt, checkpoint từng phiên bản, chạy tiếp được sau khi Colab bị ngắt mà không tải lại phần đã xong.
-- **Kiểm tra và đo đạc:** `validate.py` kiểm tra toàn bộ corpus, `corpus_statistics.py` tính các chỉ số, `benchmark.py` đo thời gian, RAM, dung lượng đĩa trên Colab CPU-only.
+- **Discovery and metadata** through the arXiv API: every assigned ID is resolved, the version list of each paper is determined, and the metadata is stored with the columns of the `papers` table (title, authors, submission date, revision dates, venue).
+- **LaTeX sources of every version** from `export.arxiv.org/src/<id>v<N>`: the actual file format is detected, only `.tex`/`.bib`/`.bbl` files are extracted with their relative paths, and an empty record is kept for PDF-only versions and versions without TeX.
+- **References** through the Semantic Scholar Graph API: every reference is kept in `references_all.json`, and the references with an arXiv ID are separated into `references.json`, ready to become the `references` table in Milestone 3.
+- **Reliability:** the request limits of arXiv and Semantic Scholar are respected. Requests to arXiv travel over several routes (Colab, WARP, Webshare); a refused route pauses on its own while the others continue, without raising the overall request pace. The crawler retries in passes, checkpoints every version, saves a snapshot to Drive after each step, and resumes after a Colab disconnection without downloading completed work again.
+- **Validation and measurement:** `validate.py` checks the whole corpus, `corpus_statistics.py` computes the statistics, and `benchmark.py` measures time, RAM and disk usage on a CPU-only Colab runtime.
 
-Các con số cụ thể (số bài crawl thành công, tỷ lệ thành công, kích thước trước/sau khi bỏ hình, số reference trung bình, thời gian, RAM, dung lượng) được tính khi build sách ở [Chương 4](./04_crawling_results.ipynb) và [Chương 5](./05_performance.ipynb).
+The concrete figures (papers crawled successfully, success rate, size before and after removing figures, average number of references, time, RAM and disk usage) are computed at build time in [Chapter 4](./04_crawling_results.ipynb) and [Chapter 5](./05_performance.ipynb).
 
-## 2. Hạn chế còn lại
+## 2. Remaining limitations
 
-Danh sách đầy đủ và số lượng từng loại có ở [Chương 6](./06_errors_limitations.ipynb). Tóm tắt:
+The complete list, with the count of each case, is given in [Chapter 6](./06_errors_limitations.ipynb). In summary:
 
-- Một số phiên bản arXiv trả HTTP 404 hoặc chỉ có PDF, nên không có mã nguồn. Các phiên bản này được ghi nhận, không bị bỏ qua.
-- Semantic Scholar chưa lập chỉ mục một số bài mới, hoặc có danh sách reference nhưng không chia sẻ. Ngày nộp arXiv của reference không phải lúc nào cũng có.
-- Các khoảng ID được crawl lần lượt trên một runtime Colab; do giới hạn 12 giờ, lượt chạy trải qua nhiều phiên và tiếp tục từ bản lưu, nên thời gian chạy được báo cáo theo từng bước (invocation) và cộng lại, không phải một lần chạy liền mạch duy nhất.
+- Some versions have no TeX source: withdrawn versions (arXiv answers HTTP 404; every case was checked by hand and confirmed as withdrawn), PDF-only versions, and a few HTML submissions. These versions are recorded, not skipped. The HTML submissions remain in the `failed` state because `extractor.py` treats every HTML file as a server error page.
+- Semantic Scholar has not yet indexed some recent papers, and for a few others it lists references without sharing them. Reference metadata is therefore limited to what Semantic Scholar provides.
+- The ID ranges were crawled one after another on a single Colab runtime. Because of the 12-hour limit, the run spanned several sessions and resumed from snapshots, so the running time is reported per step (invocation) and summed, rather than as one continuous run. The parts outside this sum (snapshot saving and restoring, a step interrupted by a runtime failure) are measured separately in [Chapter 5](./05_performance.ipynb).
 
-## 3. Chuẩn bị cho Milestone 2
+## 3. Preparation for Milestone 2
 
-Corpus Milestone 1 là đầu vào trực tiếp của Milestone 2:
+The Milestone 1 corpus is the direct input of Milestone 2:
 
-- Cấu trúc thư mục con của mỗi phiên bản được giữ nguyên, nên các lệnh `\input`/`\include` vẫn phân giải được để tìm compilation path.
-- File `.tex` không bị chỉnh sửa, giữ nguyên `\begin{figure}`, `\cite`, `\bibitem` để dựng cây phân cấp và trích xuất BibTeX.
-- `references_all.json` và `references.json` là tập ứng viên để ghép với các BibTeX entry ở Milestone 3.
+- The sub-folder structure of each version is preserved, so `\input`/`\include` commands still resolve when the compilation path is reconstructed.
+- The `.tex` files are unmodified and keep `\begin{figure}`, `\cite` and `\bibitem`, which are needed to build hierarchy trees and extract BibTeX entries.
+- The `.bbl` files are kept for papers without a `.bib` file, so that Milestone 2 can still recover their bibliographies.
+- `references_all.json` and `references.json` form the candidate pool for matching BibTeX entries in Milestone 3.

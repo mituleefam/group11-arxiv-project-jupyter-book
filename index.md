@@ -1,13 +1,13 @@
 ---
-title: "arXiv Project — Nhóm 11"
-short_title: "Trang chủ"
+title: "arXiv Project — Group 11"
+short_title: "Home"
 ---
 
-Đây là báo cáo đồ án **arXiv Project** của Nhóm 11, môn Nhập môn Khoa học Dữ liệu. Báo cáo được viết dần theo từng milestone trong cùng một cuốn sách:
+This book is the report of the **arXiv Project** of Group 11 for the Introduction to Data Science course. The report grows with each milestone within the same book:
 
-| Phần | Nội dung | Trạng thái |
+| Part | Content | Status |
 | :--- | :--- | :--- |
-| **Milestone 1 — Thu thập dữ liệu** | Discovery các bài arXiv được giao, tải mã nguồn LaTeX của mọi phiên bản, metadata và references từ Semantic Scholar, kiểm tra dữ liệu và đo hiệu năng | Bắt đầu từ [Chương 1](./notebooks/01_intro.md) |
-| **Milestone 2 — Phân tích cú pháp và chuẩn hóa** | Dựng cây phân cấp, chuẩn hóa nội dung, chuyển `\bibitem` sang BibTeX, khử trùng lặp qua các phiên bản | Sẽ bổ sung |
+| **Milestone 1 — Data Crawling** | Discovery of the assigned arXiv papers, LaTeX sources of every version, metadata and references from Semantic Scholar, data validation and performance measurement | Starts at [Chapter 1](./notebooks/01_intro.md) |
+| **Milestone 2 — Parsing and Standardization** | Hierarchy trees, content standardization, conversion of `\bibitem` entries to BibTeX, deduplication across versions | To be added |
 
-Mọi bảng và biểu đồ trong sách được tính bằng code khi build sách, từ các bảng số liệu tổng hợp trong thư mục `data/` của repository này. Mã nguồn crawler nằm ở repository [group11-arxiv-project](https://github.com/mituleefam/group11-arxiv-project).
+Every table and figure in this book is computed by code at build time from the aggregated tables in the `data/` folder of this repository. The crawler source code is in the [group11-arxiv-project](https://github.com/mituleefam/group11-arxiv-project) repository.

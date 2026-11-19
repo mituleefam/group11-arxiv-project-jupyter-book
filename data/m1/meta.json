@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-01T23:55:06Z",
-  "code_commit": "af7f268505fd3a444dab719ab54715ab0b78209e",
+  "generated_at": "2026-11-11T18:56:20Z",
+  "code_commit": "03d8e8e6144d904bdff31abf9a15b50bc8a536d5",
   "members": [
-    "AQuan",
-    "GBao",
+    "Quan",
+    "Bao",
     "Phat",
     "Thu",
     "Tram"
@@ -11,5 +11,7 @@
   "one_machine": true,
   "assigned_ids": true,
   "paper_timings": true,
-  "warnings": []
+  "warnings": [
+    "Tram: invocation 20261111T003213_008985Z has no final summary (runtime died?), not counted; last seen after 1142.087 s"
+  ]
 }

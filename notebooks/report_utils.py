@@ -21,6 +21,8 @@ pio.templates.default = "plotly_white"
 COLORS = px.colors.qualitative.Safe
 FINAL_SOURCE = {"success", "pdf_only", "no_tex"}  # final version states with a folder on disk
 REF_OK = {"success", "empty"}
+# arXiv IDs are text: read as numbers, 2512.18230 would lose its last zero
+ID_COLUMNS = {c: str for c in ("arxiv_id", "version", "first_id", "last_id")}
 
 
 def data_dir() -> Path:
@@ -39,7 +41,7 @@ def load(name: str) -> pd.DataFrame:
     folder = data_dir()
     for path in (folder / f"{name}.csv.gz", folder / f"{name}.csv"):
         if path.is_file():
-            return pd.read_csv(path, low_memory=False)
+            return pd.read_csv(path, low_memory=False, dtype=ID_COLUMNS)
     raise FileNotFoundError(f"{name}.csv(.gz) is missing in {folder}: re-run export_report_data.py")
 
 
@@ -94,8 +96,8 @@ def human_seconds(s) -> str:
     if s < 120:
         return f"{s:,.1f} s"
     if s < 7200:
-        return f"{s / 60:,.1f} phút"
-    return f"{s / 3600:,.2f} giờ"
+        return f"{s / 60:,.1f} min"
+    return f"{s / 3600:,.2f} h"
 
 
 def pct(x) -> str:
@@ -141,7 +143,7 @@ def show(fig) -> None:
 def provenance() -> None:
     """Where the numbers of a chapter come from."""
     m = meta()
-    commit = (m.get("code_commit") or "không rõ")[:10]
-    display(HTML(f"<p><small>Nguồn số liệu: <code>data/m1/</code> xuất lúc {m['generated_at']} "
-                 f"từ {len(m['members'])} thư mục dữ liệu ({', '.join(m['members'])}); "
-                 f"commit code <code>{commit}</code>.</small></p>"))
+    commit = (m.get("code_commit") or "unknown")[:10]
+    display(HTML(f"<p><small>Data source: <code>data/m1/</code>, exported at {m['generated_at']} "
+                 f"from {len(m['members'])} data folders ({', '.join(m['members'])}); "
+                 f"code commit <code>{commit}</code>.</small></p>"))

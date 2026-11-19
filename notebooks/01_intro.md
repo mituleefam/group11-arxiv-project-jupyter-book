@@ -1,71 +1,71 @@
 ---
-title: "Chương 1: Giới thiệu"
-short_title: "1. Giới thiệu"
+title: "Chapter 1: Introduction"
+short_title: "1. Introduction"
 ---
 
-> **Môn học:** Nhập môn Khoa học Dữ liệu (Introduction to Data Science)
-> **Đồ án:** arXiv Project
-> **Nhóm thực hiện:** Nhóm 11
-> **Giai đoạn:** Milestone 1 — Thu thập dữ liệu (Data Crawling)
+> **Course:** Introduction to Data Science
+> **Project:** arXiv Project
+> **Team:** Group 11
+> **Phase:** Milestone 1 — Data Crawling
 
-## 1. Thành viên và phân công
+## 1. Members and responsibilities
 
-Nhóm gồm **5 thành viên**. Mỗi người chủ trì một mô-đun của pipeline chung. Khoảng arXiv ID được giao của cả 5 thành viên được **crawl lần lượt trong một lượt chạy** bằng cùng một bộ code trên Google Colab; dữ liệu của mỗi khoảng vẫn nằm trong một thư mục riêng.
+The group has **five members**, each leading one module of the shared pipeline. The assigned arXiv ID ranges of all five members were **crawled one after another in a single run** with the same code on Google Colab, and the data of each range is kept in a separate folder.
 
-| STT | Họ và tên | MSSV | Vai trò | Mô-đun phụ trách |
+| No. | Full name | Main Role | Modules |
 | :---: | :--- | :---: | :--- | :--- |
-| 1 | `[Họ và tên]` | `[MSSV]` | Member 1 — Entry Discovery & Metadata | `discovery.py`, `metadata.py`, `main.py` |
-| 2 | `[Họ và tên]` | `[MSSV]` | Member 2 — Source Downloader & Extraction | `downloader.py`, `extractor.py`, `checkpoint.py`, `rate_limiter.py` |
-| 3 | `[Họ và tên]` | `[MSSV]` | Member 3 — References Crawling | `references.py`, `ref_dates_kaggle.py` |
-| 4 | `[Họ và tên]` | `[MSSV]` | Member 4 — Data Validation & Performance | `validate.py`, `corpus_statistics.py`, `benchmark.py`, `group_benchmark.py` |
-| 5 | `[Họ và tên]` | `[MSSV]` | Member 5 — Jupyter Book & Documentation | Repo Jupyter Book, `README.md` |
+| 1 | `Phạm Trần Anh Quân` | Member 1 — Entry Discovery & Metadata | `discovery.py`, `metadata.py`, `main.py` |
+| 2 | `Lương Gia Bảo` | Member 2 — Source Downloader & Extraction | `downloader.py`, `extractor.py`, `checkpoint.py`, `rate_limiter.py` |
+| 3 | `Nguyễn Thành Phát` | Member 3 — References Crawling | `references.py`, `ref_dates_kaggle.py` |
+| 4 | `Trần Thị Ngọc Trâm` | Member 4 — Data Validation & Performance | `validate.py`, `corpus_statistics.py`, `benchmark.py`, `group_benchmark.py` |
+| 5 | `Lê Phạm Minh Thu` | Member 5 — Jupyter Book & Documentation | Jupyter Book repository, `README.md` |
 
-Khoảng ID thực tế của từng thành viên (ID đầu, ID cuối, số ID) được đọc từ dữ liệu crawl và trình bày tự động ở [Chương 3](./03_data_organization.ipynb).
+In the tables and figures, each ID range is labelled with the first name of the member assigned to it (Quan, Bao, Phat, Thu, Tram). The actual range of each member (first ID, last ID, number of IDs) is read from the crawl data and presented automatically in [Chapter 3](./03_data_organization.ipynb).
 
-## 2. Bối cảnh
+## 2. Background
 
-[arXiv](https://arxiv.org/) là kho lưu trữ mở với hơn hai triệu bài báo khoa học. Phần lớn các bài tập crawl arXiv chỉ thu thập metadata. Đồ án này thu thập **mã nguồn LaTeX đầy đủ** của bài báo thay cho file PDF, vì:
+[arXiv](https://arxiv.org/) is an open repository of more than two million scientific papers. Most arXiv crawling exercises collect metadata only. This project collects the **full LaTeX sources** of the papers instead of their PDF files, because LaTeX:
 
-1. **Giữ được cấu trúc phân cấp:** chương, mục, danh sách, bảng biểu được khai báo tường minh trong LaTeX, còn PDF chỉ còn các khối chữ đã dàn trang.
-2. **Giữ nguyên công thức toán:** công thức nằm ở dạng mã LaTeX gốc, không bị biến dạng như khi trích xuất chữ từ PDF.
-3. **Liên kết trích dẫn rõ ràng:** lệnh `\cite{}` trỏ trực tiếp đến khóa trong `\bibitem` hoặc file `.bib`.
+1. **Preserves the hierarchical structure:** chapters, sections, lists and tables are declared explicitly in LaTeX, whereas a PDF contains only laid-out blocks of text.
+2. **Preserves mathematical formulas:** formulas remain in their original LaTeX form, free of the distortion caused by text extraction from PDF.
+3. **Makes citations explicit:** each `\cite{}` command points directly to a key in a `\bibitem` or a `.bib` file.
 
-Theo tài liệu của arXiv, khoảng **97%** bài nộp có mã nguồn TeX, phần còn lại chỉ có PDF. Với những phiên bản không có TeX, nhóm vẫn giữ một bản ghi rỗng thay vì bỏ bài báo, đúng yêu cầu của đề.
+According to arXiv's documentation, about **97%** of submissions have a TeX source, while the remainder are PDF-only. For versions without TeX, an empty record is kept instead of dropping the paper, as required by the statement.
 
-Hình ảnh chiếm phần lớn dung lượng của gói nguồn nhưng không cần cho các milestone sau. Vì vậy crawler **chỉ trích xuất các file `.tex` và `.bib`** từ gói nguồn: file hình không bao giờ được ghi vào corpus, còn các lệnh `\begin{figure}`, `\includegraphics` trong file `.tex` được giữ nguyên từng byte. Tỷ lệ dung lượng giảm được nhờ cách làm này được đo trên dữ liệu thật ở [Chương 4](./04_crawling_results.ipynb).
+Figures account for most of the size of a source archive but are not needed by the later milestones. The crawler therefore **extracts only `.tex`, `.bib` and `.bbl` files** from each archive: figure files never enter the corpus, while the `\begin{figure}` and `\includegraphics` commands inside the `.tex` files are kept byte for byte. The `.bbl` files (pre-compiled bibliographies) are kept in addition, following the instructor's Q&A ruling: for a paper with neither a `.bib` file nor `\bibitem` entries, the `.bbl` file is the only source of its references and must not be discarded. The size reduction achieved by this approach is measured on the actual data in [Chapter 4](./04_crawling_results.ipynb).
 
-## 3. Mục tiêu của Milestone 1
+## 3. Objectives of Milestone 1
 
-1. **Entry discovery:** phân giải khoảng arXiv ID được giao qua arXiv API (`id_list`), phân biệt ID tồn tại, ID không tồn tại và lỗi API, đồng thời xác định danh sách phiên bản `v1, v2, …` của mỗi bài.
-2. **Metadata:** lấy tiêu đề, tác giả, ngày nộp, các ngày sửa đổi và nơi công bố của từng bài.
-3. **Mã nguồn LaTeX:** tải riêng từng phiên bản từ `https://export.arxiv.org/src/<id>v<N>`, nhận diện định dạng thật của file tải về và chỉ giữ `.tex`/`.bib` với nguyên cấu trúc thư mục con.
-4. **References:** thu thập danh sách tài liệu tham khảo của mỗi bài qua Semantic Scholar Graph API, giữ toàn bộ reference cục bộ và đánh dấu các reference có arXiv ID.
-5. **Kiểm tra và đo hiệu năng:** kiểm tra tự động tính đầy đủ của corpus và đo thời gian chạy, RAM, dung lượng đĩa trên Google Colab CPU-only.
-6. **Báo cáo:** mọi bảng và biểu đồ trong sách được sinh bằng code khi build Jupyter Book.
+1. **Entry discovery:** resolve the assigned arXiv ID range through the arXiv API (`id_list`), distinguish existing IDs, non-existent IDs and API errors, and determine the version list `v1, v2, …` of each paper.
+2. **Metadata:** collect the title, authors, submission date, revision dates and venue of each paper.
+3. **LaTeX sources:** download each version individually from `https://export.arxiv.org/src/<id>v<N>`, detect the actual format of the downloaded file, and keep only `.tex`/`.bib`/`.bbl` files with their sub-folder structure.
+4. **References:** collect the reference list of each paper through the Semantic Scholar Graph API, keep every reference locally, and mark the references that carry an arXiv ID.
+5. **Validation and performance measurement:** check the completeness of the corpus automatically and measure running time, RAM and disk usage on a CPU-only Google Colab runtime.
+6. **Report:** generate every table and figure of this book with code at build time.
 
-## 4. Lộ trình đồ án
+## 4. Project roadmap
 
 ```{mermaid}
 flowchart LR
-    A["Milestone 1<br><b>Data Crawling</b><br>TeX/Bib, metadata, references"] --> B["Milestone 2<br><b>Parsing & Standardization</b><br>cây phân cấp, BibTeX, khử trùng lặp"]
-    B --> C["Milestone 3<br><b>Reference Matching</b><br>pipeline ML, MRR@5, Hugging Face"]
+    A["Milestone 1<br><b>Data Crawling</b><br>TeX/Bib, metadata, references"] --> B["Milestone 2<br><b>Parsing & Standardization</b><br>hierarchy trees, BibTeX, deduplication"]
+    B --> C["Milestone 3<br><b>Reference Matching</b><br>ML pipeline, MRR@5, Hugging Face"]
 ```
 
-| Milestone | Mục tiêu chính | Sản phẩm |
+| Milestone | Main objective | Deliverables |
 | :---: | :--- | :--- |
-| **M1** (chương này) | Thu thập mã nguồn LaTeX, metadata và references của mọi phiên bản | Corpus làm việc của nhóm, báo cáo M1 |
-| **M2** | Dựng cây phân cấp, chuẩn hóa nội dung, chuyển `\bibitem` sang BibTeX, khử trùng lặp | Bảng `elements`, `hierarchy`, `bibtex`, báo cáo M2 |
-| **M3** | Ghép BibTeX entry với reference có arXiv ID, đánh giá bằng MRR@5 | Dataset trên Hugging Face, poster A2 |
+| **M1** (this part) | Collect the LaTeX sources, metadata and references of every version | The group's working corpus, M1 report |
+| **M2** | Build hierarchy trees, standardize the content, convert `\bibitem` entries to BibTeX, deduplicate across versions | Tables `elements`, `hierarchy`, `bibtex`, M2 report |
+| **M3** | Match BibTeX entries with references that carry an arXiv ID, evaluated with MRR@5 | Hugging Face dataset, A2 poster |
 
-Milestone 1 không nộp dữ liệu: corpus được nhóm giữ lại làm đầu vào cho Milestone 2 và 3.
+Milestone 1 has no data submission: the corpus is kept by the group as the input of Milestones 2 and 3.
 
-## 5. Cấu trúc phần báo cáo Milestone 1
+## 5. Structure of the Milestone 1 report
 
-- [Chương 2](./02_methodology.ipynb): cách hoạt động của crawler, công cụ và thư viện đã dùng.
-- [Chương 3](./03_data_organization.ipynb): tổ chức corpus và kết quả discovery.
-- [Chương 4](./04_crawling_results.ipynb): các số liệu thống kê đề bài yêu cầu.
-- [Chương 5](./05_performance.ipynb): thời gian chạy, RAM và dung lượng đĩa.
-- [Chương 6](./06_errors_limitations.ipynb): kết quả kiểm tra dữ liệu, các lỗi còn lại và hạn chế.
-- [Chương 7](./07_conclusion.md): tổng kết.
+- [Chapter 2](./02_methodology.ipynb): how the crawler works, and the tools and libraries used.
+- [Chapter 3](./03_data_organization.ipynb): organization of the corpus and discovery results.
+- [Chapter 4](./04_crawling_results.ipynb): the statistics required by the statement.
+- [Chapter 5](./05_performance.ipynb): running time, RAM and disk usage.
+- [Chapter 6](./06_errors_limitations.ipynb): validation results, remaining errors and limitations.
+- [Chapter 7](./07_conclusion.md): conclusion.
 
-Mã nguồn: [group11-arxiv-project](https://github.com/mituleefam/group11-arxiv-project).
+Source code: [group11-arxiv-project](https://github.com/mituleefam/group11-arxiv-project).

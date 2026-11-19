@@ -1,31 +1,33 @@
-# arXiv Project — Nhóm 11: Jupyter Book
+# arXiv Project — Group 11: Jupyter Book
 
-Báo cáo của đồ án, viết bằng [Jupyter Book 2](https://jupyterbook.org) (MyST). Mã nguồn crawler ở
+Report of the project, written with [Jupyter Book 2](https://jupyterbook.org) (MyST). The crawler source code is in
 [group11-arxiv-project](https://github.com/mituleefam/group11-arxiv-project).
 
 ```text
-myst.yml                    cấu hình sách và mục lục (Milestone 1, sau này thêm Milestone 2)
-index.md                    trang chủ
-notebooks/                  các chương; 01 và 07 là Markdown, 02–06 là notebook
-notebooks/report_utils.py   hàm dùng chung: đọc data/m1/, định dạng số, vẽ plotly
-data/m1/                    số liệu tổng hợp do src/export_report_data.py của repo code tạo ra
-.github/workflows/deploy.yml  build (có thực thi notebook) và đưa lên GitHub Pages
+myst.yml                    book configuration and table of contents (Milestone 1, later Milestone 2)
+index.md                    home page
+notebooks/                  chapters; 01 and 07 are Markdown, 02–06 are notebooks
+notebooks/report_utils.py   shared helpers: reading data/m1/, number formatting, plotly figures
+data/m1/                    aggregated data written by src/export_report_data.py of the code repository
+tools/m1_extras.py          builds 3 more tables of data/m1 (manual checks, routes, snapshots) from the benchmark folder
+.github/workflows/deploy.yml  builds the book (executing the notebooks) and publishes it on GitHub Pages
 ```
 
-## Build trên máy
+## Building locally
 
 ```bash
 python -m venv .venv_book
 .venv_book\Scripts\activate            # macOS/Linux: source .venv_book/bin/activate
 pip install -r requirements.txt
-jupyter book start --execute           # xem thử ở http://localhost:3000
-jupyter book build --html --execute    # tạo _build/html
+jupyter book start --execute           # preview at http://localhost:3000
+jupyter book build --html --execute    # writes _build/html
 ```
 
-Cần Node.js (Jupyter Book 2 tự hỏi cài nếu chưa có). Phải kích hoạt venv trước để lệnh `jupyter` có trên PATH,
-nếu không `--execute` báo *Could not load Jupyter session manager*.
+Node.js is required (Jupyter Book 2 offers to install it if missing). Activate the virtual environment first so that
+the `jupyter` command is on the PATH; otherwise `--execute` fails with *Could not load Jupyter session manager*.
 
-## Cập nhật số liệu
+## Updating the data
 
-Chạy `src/export_report_data.py` của repo code với thư mục dữ liệu của cả 5 thành viên, `--out` trỏ vào
-`data/m1/` của repo này, rồi commit `data/m1/`. Xem `data/m1/README.md`.
+Run `src/export_report_data.py` of the code repository on the data folders of all five members, with `--out` pointing
+to `data/m1/` of this repository; then run `tools/m1_extras.py` on the benchmark folder, and commit `data/m1/`.
+See `data/m1/README.md`.
