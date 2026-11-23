@@ -8,6 +8,6 @@ This book is the report of the **arXiv Project** of Group 11 for the Introductio
 | Part | Content | Status |
 | :--- | :--- | :--- |
 | **Milestone 1 — Data Crawling** | Discovery of the assigned arXiv papers, LaTeX sources of every version, metadata and references from Semantic Scholar, data validation and performance measurement | Starts at [Chapter 1](./notebooks/01_intro.md) |
-| **Milestone 2 — Parsing and Standardization** | Hierarchy trees, content standardization, conversion of `\bibitem` entries to BibTeX, deduplication across versions | To be added |
+| **Milestone 2 — Parsing and Standardization** | Hierarchy trees, content standardization, conversion of `\bibitem` entries to BibTeX, deduplication across versions | Starts at [Chapter 8](./notebooks/m2/08_intro.md) |
 
-Every table and figure in this book is computed by code at build time from the aggregated tables in the `data/` folder of this repository. The crawler source code is in the [group11-arxiv-project](https://github.com/mituleefam/group11-arxiv-project) repository.
+Every table and figure in this book is computed by code at build time from the aggregated tables in the `data/` folder of this repository. The source code of the crawler and the parser is in the [group11-arxiv-project](https://github.com/mituleefam/group11-arxiv-project) repository.

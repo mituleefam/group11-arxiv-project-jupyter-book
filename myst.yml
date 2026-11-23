@@ -24,10 +24,16 @@ project:
         - file: notebooks/05_performance.ipynb
         - file: notebooks/06_errors_limitations.ipynb
         - file: notebooks/07_conclusion.md
-    # Milestone 2 adds its own part here, e.g.:
-    # - title: "Milestone 2 — Parsing and Standardization"
-    #   children:
-    #     - file: notebooks/m2/01_intro.md
+    - title: "Milestone 2 — Parsing and Standardization"
+      children:
+        - file: notebooks/m2/08_intro.md
+        - file: notebooks/m2/09_parsing.ipynb
+        - file: notebooks/m2/10_standardization.ipynb
+        - file: notebooks/m2/11_references.ipynb
+        - file: notebooks/m2/12_results.ipynb
+        - file: notebooks/m2/13_performance.ipynb
+        - file: notebooks/m2/14_validation.ipynb
+        - file: notebooks/m2/15_conclusion.md
 site:
   template: book-theme
   options:
