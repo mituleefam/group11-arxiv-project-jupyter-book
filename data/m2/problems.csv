@@ -1,0 +1,23 @@
+member,kind,versions
+Bao,Character encoding error,26
+Bao,No TeX (Milestone 1),385
+Bao,Other,147
+Bao,Root file not determined,231
+Phat,Character encoding error,42
+Phat,No TeX (Milestone 1),538
+Phat,Other,150
+Phat,Root file not determined,209
+Quan,Character encoding error,19
+Quan,No TeX (Milestone 1),313
+Quan,Other,185
+Quan,Root file not determined,135
+Quan,\input cycle,2
+Thu,Character encoding error,64
+Thu,No TeX (Milestone 1),546
+Thu,Other,206
+Thu,Root file not determined,203
+Tram,Character encoding error,39
+Tram,No TeX (Milestone 1),547
+Tram,Other,196
+Tram,Root file not determined,211
+Tram,\input cycle,3

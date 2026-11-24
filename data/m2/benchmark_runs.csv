@@ -1,0 +1,7 @@
+member,stage,run_id,status,exit_code,wall_seconds,ram_sampled_peak_bytes,ram_mean_bytes,parquet_final_bytes,workers,force_reparse,cpu_only_claim,environment
+Tram,parse,20261115T154151_665741Z,finished,0,1546.802,721190912,212042372.13442087,156019361,2,1,declared,google_colab
+Thu,parse,20261115T162040_576226Z,finished,0,1728.007,1039474688,252559534.65420562,158735767,2,1,declared,google_colab
+Phat,parse,20261115T170540_426255Z,finished,0,1772.975,803532800,301142830.77063173,155822013,2,1,declared,google_colab
+Bao,parse,20261115T175207_377141Z,finished,0,1480.687,783896576,228337364.0544959,158706474,2,1,declared,google_colab
+Quan,parse,20261115T211926_132471Z,finished,0,1511.6,603709440,162780842.21094793,174730579,2,1,declared,google_colab
+export,export,20261115T222241_347631Z,finished,0,212.051,698961920,606111879.886256,,,,,

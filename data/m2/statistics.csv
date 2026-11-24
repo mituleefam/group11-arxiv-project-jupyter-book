@@ -1,0 +1,292 @@
+member,metric,value,unit,scope,source,note
+Tram,discovered_papers_selected,5000,count,selected_discovered_papers,M1_manifest_or_corpus,Not the full assigned ID range; unavailable papers may be excluded by M1 discovery
+Tram,m1_manifest_entries,5000,count,selected_discovered_papers,M1_manifest,May include unsuccessful/non-existent assigned IDs; not necessarily all assigned IDs
+Tram,papers_with_output,5000,count,selected_discovered_papers,parsed_json,
+Tram,papers_not_parsed,0,count,selected_discovered_papers,parse_manifest,
+Tram,papers_missing_or_invalid_output,0,count,selected_discovered_papers,parsed_json,
+Tram,parsing_success_percent,100.0,%,selected_discovered_papers,parse_manifest_and_parsed_json,Denominator: M1-discovered papers selected
+Tram,versions_with_record,7566,count,selected_discovered_papers,parsed_json,
+Tram,version_status_no_source,547,count,selected_discovered_papers,parsed_json,
+Tram,version_status_ok,7019,count,selected_discovered_papers,parsed_json,
+Tram,versions_with_tex,7019,count,selected_discovered_papers,parsed_json,
+Tram,versions_references_from_bbl,737,count,selected_discovered_papers,parsed_json,References read from a .bbl file of the source
+Tram,versions_references_in_missing_bbl,0,count,selected_discovered_papers,parsed_json,The document names a .bbl or .bib that is not in the folder: its references are lost
+Tram,m1_discovery_status_success,5000,count,selected_discovered_papers,M1_manifest,
+Tram,elements_occurrences_before_dedup,3089894,count,selected_discovered_papers,parsed_json,One per hierarchy edge + each version's root
+Tram,elements_unique_after_dedup,2226454,count,selected_discovered_papers,parsed_json,
+Tram,element_reduction_percent,27.944,%,selected_discovered_papers,parsed_json,"Record-count reduction, NOT compressed bytes saved"
+Tram,hierarchy_edges,3082328,count,selected_discovered_papers,parsed_json,
+Tram,element_distinct_kind_document,7566,count,selected_discovered_papers,parsed_json,
+Tram,element_occurrences_kind_document,7566,count,selected_discovered_papers,parsed_json,
+Tram,element_distinct_kind_figure,60163,count,selected_discovered_papers,parsed_json,
+Tram,element_occurrences_kind_figure,77274,count,selected_discovered_papers,parsed_json,
+Tram,element_distinct_kind_formula,205080,count,selected_discovered_papers,parsed_json,
+Tram,element_occurrences_kind_formula,285787,count,selected_discovered_papers,parsed_json,
+Tram,element_distinct_kind_heading,109765,count,selected_discovered_papers,parsed_json,
+Tram,element_occurrences_kind_heading,162260,count,selected_discovered_papers,parsed_json,
+Tram,element_distinct_kind_item,70678,count,selected_discovered_papers,parsed_json,
+Tram,element_occurrences_kind_item,98847,count,selected_discovered_papers,parsed_json,
+Tram,element_distinct_kind_list,20711,count,selected_discovered_papers,parsed_json,
+Tram,element_occurrences_kind_list,29129,count,selected_discovered_papers,parsed_json,
+Tram,element_distinct_kind_paragraph,16205,count,selected_discovered_papers,parsed_json,
+Tram,element_occurrences_kind_paragraph,25692,count,selected_discovered_papers,parsed_json,
+Tram,element_distinct_kind_sentence,1736286,count,selected_discovered_papers,parsed_json,
+Tram,element_occurrences_kind_sentence,2403339,count,selected_discovered_papers,parsed_json,
+Tram,bibtex_entries_after_dedup,230468,count,selected_discovered_papers,parsed_json,
+Tram,bibtex_before_log_papers,5000,count,selected_discovered_papers,reference_log.csv,
+Tram,bibtex_entries_before_dedup,343992,count,selected_discovered_papers,reference_log.csv,Missing unless every successfully parsed paper has a completed M3 reference log; rerun it after code changes
+Tram,bibtex_reduction_percent,33.0019,%,selected_discovered_papers,reference_log.csv + parsed_json,
+Tram,bibtex_title_completeness_percent,96.6338,%,selected_discovered_papers,parsed_json,
+Tram,bibtex_authors_completeness_percent,99.294,%,selected_discovered_papers,parsed_json,
+Tram,bibtex_year_completeness_percent,98.8215,%,selected_discovered_papers,parsed_json,
+Tram,bibtex_doi_completeness_percent,37.5766,%,selected_discovered_papers,parsed_json,
+Tram,bibtex_journal_completeness_percent,93.738,%,selected_discovered_papers,parsed_json,
+Tram,bibtex_url_completeness_percent,54.7304,%,selected_discovered_papers,parsed_json,
+Tram,mean_parse_seconds_per_paper,0.598,seconds,selected_discovered_papers,parse_manifest,Per-paper worker time; NOT end-to-end wall time under multiprocessing
+Tram,parsing_time_logged_papers,5000,count,selected_discovered_papers,parse_manifest,
+Tram,validation_pass_checks,106456,count,selected_discovered_papers,validation_report_m2.csv,"Count of CHECK RECORDS, not count of publications"
+Tram,validation_warn_checks,1702,count,selected_discovered_papers,validation_report_m2.csv,"Count of CHECK RECORDS, not count of publications"
+Tram,validation_fail_checks,0,count,selected_discovered_papers,validation_report_m2.csv,"Count of CHECK RECORDS, not count of publications"
+Tram,validation_warn_acknowledgements_included,7,count,selected_discovered_papers,validation_report_m2.csv,
+Tram,validation_warn_appendix_included,16,count,selected_discovered_papers,validation_report_m2.csv,
+Tram,validation_warn_citation_key_coverage,98,count,selected_discovered_papers,validation_report_m2.csv,
+Tram,validation_warn_empty_tex_tree,4,count,selected_discovered_papers,validation_report_m2.csv,
+Tram,validation_warn_encoding_replacement_chars,3,count,selected_discovered_papers,validation_report_m2.csv,
+Tram,validation_warn_gathering_problems,901,count,selected_discovered_papers,validation_report_m2.csv,
+Tram,validation_warn_nonstandard_leaf_kinds,673,count,selected_discovered_papers,validation_report_m2.csv,
+Tram,elements_parquet_bytes,124087863,bytes,selected_data_root,parquet_files,Measured on disk; may contain more papers than a --limit selection
+Tram,hierarchy_parquet_bytes,9945398,bytes,selected_data_root,parquet_files,Measured on disk; may contain more papers than a --limit selection
+Tram,bibtex_parquet_bytes,21986100,bytes,selected_data_root,parquet_files,Measured on disk; may contain more papers than a --limit selection
+Thu,discovered_papers_selected,5000,count,selected_discovered_papers,M1_manifest_or_corpus,Not the full assigned ID range; unavailable papers may be excluded by M1 discovery
+Thu,m1_manifest_entries,5000,count,selected_discovered_papers,M1_manifest,May include unsuccessful/non-existent assigned IDs; not necessarily all assigned IDs
+Thu,papers_with_output,5000,count,selected_discovered_papers,parsed_json,
+Thu,papers_not_parsed,0,count,selected_discovered_papers,parse_manifest,
+Thu,papers_missing_or_invalid_output,0,count,selected_discovered_papers,parsed_json,
+Thu,parsing_success_percent,100.0,%,selected_discovered_papers,parse_manifest_and_parsed_json,Denominator: M1-discovered papers selected
+Thu,versions_with_record,7612,count,selected_discovered_papers,parsed_json,
+Thu,version_status_no_source,546,count,selected_discovered_papers,parsed_json,
+Thu,version_status_ok,7066,count,selected_discovered_papers,parsed_json,
+Thu,versions_with_tex,7066,count,selected_discovered_papers,parsed_json,
+Thu,versions_references_from_bbl,858,count,selected_discovered_papers,parsed_json,References read from a .bbl file of the source
+Thu,versions_references_in_missing_bbl,1,count,selected_discovered_papers,parsed_json,The document names a .bbl or .bib that is not in the folder: its references are lost
+Thu,m1_discovery_status_success,5000,count,selected_discovered_papers,M1_manifest,
+Thu,elements_occurrences_before_dedup,3173491,count,selected_discovered_papers,parsed_json,One per hierarchy edge + each version's root
+Thu,elements_unique_after_dedup,2261148,count,selected_discovered_papers,parsed_json,
+Thu,element_reduction_percent,28.7489,%,selected_discovered_papers,parsed_json,"Record-count reduction, NOT compressed bytes saved"
+Thu,hierarchy_edges,3165879,count,selected_discovered_papers,parsed_json,
+Thu,element_distinct_kind_document,7612,count,selected_discovered_papers,parsed_json,
+Thu,element_occurrences_kind_document,7612,count,selected_discovered_papers,parsed_json,
+Thu,element_distinct_kind_figure,59748,count,selected_discovered_papers,parsed_json,
+Thu,element_occurrences_kind_figure,76985,count,selected_discovered_papers,parsed_json,
+Thu,element_distinct_kind_formula,213016,count,selected_discovered_papers,parsed_json,
+Thu,element_occurrences_kind_formula,298823,count,selected_discovered_papers,parsed_json,
+Thu,element_distinct_kind_heading,108023,count,selected_discovered_papers,parsed_json,
+Thu,element_occurrences_kind_heading,158658,count,selected_discovered_papers,parsed_json,
+Thu,element_distinct_kind_item,65419,count,selected_discovered_papers,parsed_json,
+Thu,element_occurrences_kind_item,95440,count,selected_discovered_papers,parsed_json,
+Thu,element_distinct_kind_list,19935,count,selected_discovered_papers,parsed_json,
+Thu,element_occurrences_kind_list,29529,count,selected_discovered_papers,parsed_json,
+Thu,element_distinct_kind_paragraph,15345,count,selected_discovered_papers,parsed_json,
+Thu,element_occurrences_kind_paragraph,22692,count,selected_discovered_papers,parsed_json,
+Thu,element_distinct_kind_sentence,1772050,count,selected_discovered_papers,parsed_json,
+Thu,element_occurrences_kind_sentence,2483752,count,selected_discovered_papers,parsed_json,
+Thu,bibtex_entries_after_dedup,239236,count,selected_discovered_papers,parsed_json,
+Thu,bibtex_before_log_papers,5000,count,selected_discovered_papers,reference_log.csv,
+Thu,bibtex_entries_before_dedup,369964,count,selected_discovered_papers,reference_log.csv,Missing unless every successfully parsed paper has a completed M3 reference log; rerun it after code changes
+Thu,bibtex_reduction_percent,35.3353,%,selected_discovered_papers,reference_log.csv + parsed_json,
+Thu,bibtex_title_completeness_percent,96.5223,%,selected_discovered_papers,parsed_json,
+Thu,bibtex_authors_completeness_percent,99.3162,%,selected_discovered_papers,parsed_json,
+Thu,bibtex_year_completeness_percent,98.7744,%,selected_discovered_papers,parsed_json,
+Thu,bibtex_doi_completeness_percent,42.1299,%,selected_discovered_papers,parsed_json,
+Thu,bibtex_journal_completeness_percent,93.8061,%,selected_discovered_papers,parsed_json,
+Thu,bibtex_url_completeness_percent,58.793,%,selected_discovered_papers,parsed_json,
+Thu,mean_parse_seconds_per_paper,0.672,seconds,selected_discovered_papers,parse_manifest,Per-paper worker time; NOT end-to-end wall time under multiprocessing
+Thu,parsing_time_logged_papers,5000,count,selected_discovered_papers,parse_manifest,
+Thu,validation_pass_checks,107106,count,selected_discovered_papers,validation_report_m2.csv,"Count of CHECK RECORDS, not count of publications"
+Thu,validation_warn_checks,1699,count,selected_discovered_papers,validation_report_m2.csv,"Count of CHECK RECORDS, not count of publications"
+Thu,validation_fail_checks,0,count,selected_discovered_papers,validation_report_m2.csv,"Count of CHECK RECORDS, not count of publications"
+Thu,validation_warn_acknowledgements_included,7,count,selected_discovered_papers,validation_report_m2.csv,
+Thu,validation_warn_appendix_included,14,count,selected_discovered_papers,validation_report_m2.csv,
+Thu,validation_warn_citation_key_coverage,101,count,selected_discovered_papers,validation_report_m2.csv,
+Thu,validation_warn_empty_tex_tree,1,count,selected_discovered_papers,validation_report_m2.csv,
+Thu,validation_warn_encoding_replacement_chars,7,count,selected_discovered_papers,validation_report_m2.csv,
+Thu,validation_warn_gathering_problems,923,count,selected_discovered_papers,validation_report_m2.csv,
+Thu,validation_warn_nonstandard_leaf_kinds,646,count,selected_discovered_papers,validation_report_m2.csv,
+Thu,elements_parquet_bytes,125700612,bytes,selected_data_root,parquet_files,Measured on disk; may contain more papers than a --limit selection
+Thu,hierarchy_parquet_bytes,9964929,bytes,selected_data_root,parquet_files,Measured on disk; may contain more papers than a --limit selection
+Thu,bibtex_parquet_bytes,23070226,bytes,selected_data_root,parquet_files,Measured on disk; may contain more papers than a --limit selection
+Phat,discovered_papers_selected,5000,count,selected_discovered_papers,M1_manifest_or_corpus,Not the full assigned ID range; unavailable papers may be excluded by M1 discovery
+Phat,m1_manifest_entries,5000,count,selected_discovered_papers,M1_manifest,May include unsuccessful/non-existent assigned IDs; not necessarily all assigned IDs
+Phat,papers_with_output,5000,count,selected_discovered_papers,parsed_json,
+Phat,papers_not_parsed,0,count,selected_discovered_papers,parse_manifest,
+Phat,papers_missing_or_invalid_output,0,count,selected_discovered_papers,parsed_json,
+Phat,parsing_success_percent,100.0,%,selected_discovered_papers,parse_manifest_and_parsed_json,Denominator: M1-discovered papers selected
+Phat,versions_with_record,7551,count,selected_discovered_papers,parsed_json,
+Phat,version_status_no_source,538,count,selected_discovered_papers,parsed_json,
+Phat,version_status_ok,7013,count,selected_discovered_papers,parsed_json,
+Phat,versions_with_tex,7013,count,selected_discovered_papers,parsed_json,
+Phat,versions_references_from_bbl,744,count,selected_discovered_papers,parsed_json,References read from a .bbl file of the source
+Phat,versions_references_in_missing_bbl,1,count,selected_discovered_papers,parsed_json,The document names a .bbl or .bib that is not in the folder: its references are lost
+Phat,m1_discovery_status_success,5000,count,selected_discovered_papers,M1_manifest,
+Phat,elements_occurrences_before_dedup,3112511,count,selected_discovered_papers,parsed_json,One per hierarchy edge + each version's root
+Phat,elements_unique_after_dedup,2227786,count,selected_discovered_papers,parsed_json,
+Phat,element_reduction_percent,28.4248,%,selected_discovered_papers,parsed_json,"Record-count reduction, NOT compressed bytes saved"
+Phat,hierarchy_edges,3104960,count,selected_discovered_papers,parsed_json,
+Phat,element_distinct_kind_document,7551,count,selected_discovered_papers,parsed_json,
+Phat,element_occurrences_kind_document,7551,count,selected_discovered_papers,parsed_json,
+Phat,element_distinct_kind_figure,59726,count,selected_discovered_papers,parsed_json,
+Phat,element_occurrences_kind_figure,76156,count,selected_discovered_papers,parsed_json,
+Phat,element_distinct_kind_formula,205688,count,selected_discovered_papers,parsed_json,
+Phat,element_occurrences_kind_formula,295283,count,selected_discovered_papers,parsed_json,
+Phat,element_distinct_kind_heading,111946,count,selected_discovered_papers,parsed_json,
+Phat,element_occurrences_kind_heading,163692,count,selected_discovered_papers,parsed_json,
+Phat,element_distinct_kind_item,65730,count,selected_discovered_papers,parsed_json,
+Phat,element_occurrences_kind_item,94073,count,selected_discovered_papers,parsed_json,
+Phat,element_distinct_kind_list,20080,count,selected_discovered_papers,parsed_json,
+Phat,element_occurrences_kind_list,29145,count,selected_discovered_papers,parsed_json,
+Phat,element_distinct_kind_paragraph,18002,count,selected_discovered_papers,parsed_json,
+Phat,element_occurrences_kind_paragraph,27484,count,selected_discovered_papers,parsed_json,
+Phat,element_distinct_kind_sentence,1739063,count,selected_discovered_papers,parsed_json,
+Phat,element_occurrences_kind_sentence,2419127,count,selected_discovered_papers,parsed_json,
+Phat,bibtex_entries_after_dedup,224913,count,selected_discovered_papers,parsed_json,
+Phat,bibtex_before_log_papers,5000,count,selected_discovered_papers,reference_log.csv,
+Phat,bibtex_entries_before_dedup,340593,count,selected_discovered_papers,reference_log.csv,Missing unless every successfully parsed paper has a completed M3 reference log; rerun it after code changes
+Phat,bibtex_reduction_percent,33.9643,%,selected_discovered_papers,reference_log.csv + parsed_json,
+Phat,bibtex_title_completeness_percent,96.3048,%,selected_discovered_papers,parsed_json,
+Phat,bibtex_authors_completeness_percent,99.2353,%,selected_discovered_papers,parsed_json,
+Phat,bibtex_year_completeness_percent,98.9209,%,selected_discovered_papers,parsed_json,
+Phat,bibtex_doi_completeness_percent,39.0298,%,selected_discovered_papers,parsed_json,
+Phat,bibtex_journal_completeness_percent,93.5046,%,selected_discovered_papers,parsed_json,
+Phat,bibtex_url_completeness_percent,55.6268,%,selected_discovered_papers,parsed_json,
+Phat,mean_parse_seconds_per_paper,0.683,seconds,selected_discovered_papers,parse_manifest,Per-paper worker time; NOT end-to-end wall time under multiprocessing
+Phat,parsing_time_logged_papers,5000,count,selected_discovered_papers,parse_manifest,
+Phat,validation_pass_checks,106528,count,selected_discovered_papers,validation_report_m2.csv,"Count of CHECK RECORDS, not count of publications"
+Phat,validation_warn_checks,1668,count,selected_discovered_papers,validation_report_m2.csv,"Count of CHECK RECORDS, not count of publications"
+Phat,validation_fail_checks,0,count,selected_discovered_papers,validation_report_m2.csv,"Count of CHECK RECORDS, not count of publications"
+Phat,validation_warn_acknowledgements_included,4,count,selected_discovered_papers,validation_report_m2.csv,
+Phat,validation_warn_appendix_included,17,count,selected_discovered_papers,validation_report_m2.csv,
+Phat,validation_warn_citation_key_coverage,86,count,selected_discovered_papers,validation_report_m2.csv,
+Phat,validation_warn_empty_tex_tree,2,count,selected_discovered_papers,validation_report_m2.csv,
+Phat,validation_warn_encoding_replacement_chars,3,count,selected_discovered_papers,validation_report_m2.csv,
+Phat,validation_warn_gathering_problems,890,count,selected_discovered_papers,validation_report_m2.csv,
+Phat,validation_warn_nonstandard_leaf_kinds,666,count,selected_discovered_papers,validation_report_m2.csv,
+Phat,elements_parquet_bytes,123782910,bytes,selected_data_root,parquet_files,Measured on disk; may contain more papers than a --limit selection
+Phat,hierarchy_parquet_bytes,9985275,bytes,selected_data_root,parquet_files,Measured on disk; may contain more papers than a --limit selection
+Phat,bibtex_parquet_bytes,22053828,bytes,selected_data_root,parquet_files,Measured on disk; may contain more papers than a --limit selection
+Bao,discovered_papers_selected,5000,count,selected_discovered_papers,M1_manifest_or_corpus,Not the full assigned ID range; unavailable papers may be excluded by M1 discovery
+Bao,m1_manifest_entries,5000,count,selected_discovered_papers,M1_manifest,May include unsuccessful/non-existent assigned IDs; not necessarily all assigned IDs
+Bao,papers_with_output,5000,count,selected_discovered_papers,parsed_json,
+Bao,papers_not_parsed,0,count,selected_discovered_papers,parse_manifest,
+Bao,papers_missing_or_invalid_output,0,count,selected_discovered_papers,parsed_json,
+Bao,parsing_success_percent,100.0,%,selected_discovered_papers,parse_manifest_and_parsed_json,Denominator: M1-discovered papers selected
+Bao,versions_with_record,7162,count,selected_discovered_papers,parsed_json,
+Bao,version_status_no_source,385,count,selected_discovered_papers,parsed_json,
+Bao,version_status_ok,6777,count,selected_discovered_papers,parsed_json,
+Bao,versions_with_tex,6777,count,selected_discovered_papers,parsed_json,
+Bao,versions_references_from_bbl,643,count,selected_discovered_papers,parsed_json,References read from a .bbl file of the source
+Bao,versions_references_in_missing_bbl,0,count,selected_discovered_papers,parsed_json,The document names a .bbl or .bib that is not in the folder: its references are lost
+Bao,m1_discovery_status_success,5000,count,selected_discovered_papers,M1_manifest,
+Bao,elements_occurrences_before_dedup,2949442,count,selected_discovered_papers,parsed_json,One per hierarchy edge + each version's root
+Bao,elements_unique_after_dedup,2239830,count,selected_discovered_papers,parsed_json,
+Bao,element_reduction_percent,24.0592,%,selected_discovered_papers,parsed_json,"Record-count reduction, NOT compressed bytes saved"
+Bao,hierarchy_edges,2942280,count,selected_discovered_papers,parsed_json,
+Bao,element_distinct_kind_document,7162,count,selected_discovered_papers,parsed_json,
+Bao,element_occurrences_kind_document,7162,count,selected_discovered_papers,parsed_json,
+Bao,element_distinct_kind_figure,64019,count,selected_discovered_papers,parsed_json,
+Bao,element_occurrences_kind_figure,79417,count,selected_discovered_papers,parsed_json,
+Bao,element_distinct_kind_formula,201394,count,selected_discovered_papers,parsed_json,
+Bao,element_occurrences_kind_formula,264616,count,selected_discovered_papers,parsed_json,
+Bao,element_distinct_kind_heading,117911,count,selected_discovered_papers,parsed_json,
+Bao,element_occurrences_kind_heading,162965,count,selected_discovered_papers,parsed_json,
+Bao,element_distinct_kind_item,62688,count,selected_discovered_papers,parsed_json,
+Bao,element_occurrences_kind_item,84192,count,selected_discovered_papers,parsed_json,
+Bao,element_distinct_kind_list,18693,count,selected_discovered_papers,parsed_json,
+Bao,element_occurrences_kind_list,25181,count,selected_discovered_papers,parsed_json,
+Bao,element_distinct_kind_paragraph,23246,count,selected_discovered_papers,parsed_json,
+Bao,element_occurrences_kind_paragraph,32922,count,selected_discovered_papers,parsed_json,
+Bao,element_distinct_kind_sentence,1744717,count,selected_discovered_papers,parsed_json,
+Bao,element_occurrences_kind_sentence,2292987,count,selected_discovered_papers,parsed_json,
+Bao,bibtex_entries_after_dedup,223233,count,selected_discovered_papers,parsed_json,
+Bao,bibtex_before_log_papers,5000,count,selected_discovered_papers,reference_log.csv,
+Bao,bibtex_entries_before_dedup,313966,count,selected_discovered_papers,reference_log.csv,Missing unless every successfully parsed paper has a completed M3 reference log; rerun it after code changes
+Bao,bibtex_reduction_percent,28.899,%,selected_discovered_papers,reference_log.csv + parsed_json,
+Bao,bibtex_title_completeness_percent,96.9297,%,selected_discovered_papers,parsed_json,
+Bao,bibtex_authors_completeness_percent,99.2931,%,selected_discovered_papers,parsed_json,
+Bao,bibtex_year_completeness_percent,98.9746,%,selected_discovered_papers,parsed_json,
+Bao,bibtex_doi_completeness_percent,37.7583,%,selected_discovered_papers,parsed_json,
+Bao,bibtex_journal_completeness_percent,93.7854,%,selected_discovered_papers,parsed_json,
+Bao,bibtex_url_completeness_percent,56.7931,%,selected_discovered_papers,parsed_json,
+Bao,mean_parse_seconds_per_paper,0.566,seconds,selected_discovered_papers,parse_manifest,Per-paper worker time; NOT end-to-end wall time under multiprocessing
+Bao,parsing_time_logged_papers,5000,count,selected_discovered_papers,parse_manifest,
+Bao,validation_pass_checks,103195,count,selected_discovered_papers,validation_report_m2.csv,"Count of CHECK RECORDS, not count of publications"
+Bao,validation_warn_checks,1409,count,selected_discovered_papers,validation_report_m2.csv,"Count of CHECK RECORDS, not count of publications"
+Bao,validation_fail_checks,0,count,selected_discovered_papers,validation_report_m2.csv,"Count of CHECK RECORDS, not count of publications"
+Bao,validation_warn_acknowledgements_included,7,count,selected_discovered_papers,validation_report_m2.csv,
+Bao,validation_warn_appendix_included,14,count,selected_discovered_papers,validation_report_m2.csv,
+Bao,validation_warn_citation_key_coverage,104,count,selected_discovered_papers,validation_report_m2.csv,
+Bao,validation_warn_empty_tex_tree,3,count,selected_discovered_papers,validation_report_m2.csv,
+Bao,validation_warn_encoding_replacement_chars,3,count,selected_discovered_papers,validation_report_m2.csv,
+Bao,validation_warn_gathering_problems,732,count,selected_discovered_papers,validation_report_m2.csv,
+Bao,validation_warn_nonstandard_leaf_kinds,546,count,selected_discovered_papers,validation_report_m2.csv,
+Bao,elements_parquet_bytes,126727865,bytes,selected_data_root,parquet_files,Measured on disk; may contain more papers than a --limit selection
+Bao,hierarchy_parquet_bytes,9829113,bytes,selected_data_root,parquet_files,Measured on disk; may contain more papers than a --limit selection
+Bao,bibtex_parquet_bytes,22149496,bytes,selected_data_root,parquet_files,Measured on disk; may contain more papers than a --limit selection
+Quan,discovered_papers_selected,5000,count,selected_discovered_papers,M1_manifest_or_corpus,Not the full assigned ID range; unavailable papers may be excluded by M1 discovery
+Quan,m1_manifest_entries,5000,count,selected_discovered_papers,M1_manifest,May include unsuccessful/non-existent assigned IDs; not necessarily all assigned IDs
+Quan,papers_with_output,5000,count,selected_discovered_papers,parsed_json,
+Quan,papers_not_parsed,0,count,selected_discovered_papers,parse_manifest,
+Quan,papers_missing_or_invalid_output,0,count,selected_discovered_papers,parsed_json,
+Quan,parsing_success_percent,100.0,%,selected_discovered_papers,parse_manifest_and_parsed_json,Denominator: M1-discovered papers selected
+Quan,versions_with_record,7132,count,selected_discovered_papers,parsed_json,
+Quan,version_status_no_source,313,count,selected_discovered_papers,parsed_json,
+Quan,version_status_ok,6819,count,selected_discovered_papers,parsed_json,
+Quan,versions_with_tex,6819,count,selected_discovered_papers,parsed_json,
+Quan,versions_references_from_bbl,611,count,selected_discovered_papers,parsed_json,References read from a .bbl file of the source
+Quan,versions_references_in_missing_bbl,0,count,selected_discovered_papers,parsed_json,The document names a .bbl or .bib that is not in the folder: its references are lost
+Quan,m1_discovery_status_success,5000,count,selected_discovered_papers,M1_manifest,
+Quan,elements_occurrences_before_dedup,3347211,count,selected_discovered_papers,parsed_json,One per hierarchy edge + each version's root
+Quan,elements_unique_after_dedup,2513203,count,selected_discovered_papers,parsed_json,
+Quan,element_reduction_percent,24.9165,%,selected_discovered_papers,parsed_json,"Record-count reduction, NOT compressed bytes saved"
+Quan,hierarchy_edges,3340079,count,selected_discovered_papers,parsed_json,
+Quan,element_distinct_kind_document,7132,count,selected_discovered_papers,parsed_json,
+Quan,element_occurrences_kind_document,7132,count,selected_discovered_papers,parsed_json,
+Quan,element_distinct_kind_figure,67813,count,selected_discovered_papers,parsed_json,
+Quan,element_occurrences_kind_figure,86137,count,selected_discovered_papers,parsed_json,
+Quan,element_distinct_kind_formula,231181,count,selected_discovered_papers,parsed_json,
+Quan,element_occurrences_kind_formula,306879,count,selected_discovered_papers,parsed_json,
+Quan,element_distinct_kind_heading,127414,count,selected_discovered_papers,parsed_json,
+Quan,element_occurrences_kind_heading,177849,count,selected_discovered_papers,parsed_json,
+Quan,element_distinct_kind_item,81754,count,selected_discovered_papers,parsed_json,
+Quan,element_occurrences_kind_item,111687,count,selected_discovered_papers,parsed_json,
+Quan,element_distinct_kind_list,20829,count,selected_discovered_papers,parsed_json,
+Quan,element_occurrences_kind_list,28420,count,selected_discovered_papers,parsed_json,
+Quan,element_distinct_kind_paragraph,34287,count,selected_discovered_papers,parsed_json,
+Quan,element_occurrences_kind_paragraph,49441,count,selected_discovered_papers,parsed_json,
+Quan,element_distinct_kind_sentence,1942793,count,selected_discovered_papers,parsed_json,
+Quan,element_occurrences_kind_sentence,2579666,count,selected_discovered_papers,parsed_json,
+Quan,bibtex_entries_after_dedup,223638,count,selected_discovered_papers,parsed_json,
+Quan,bibtex_before_log_papers,5000,count,selected_discovered_papers,reference_log.csv,
+Quan,bibtex_entries_before_dedup,315999,count,selected_discovered_papers,reference_log.csv,Missing unless every successfully parsed paper has a completed M3 reference log; rerun it after code changes
+Quan,bibtex_reduction_percent,29.2283,%,selected_discovered_papers,reference_log.csv + parsed_json,
+Quan,bibtex_title_completeness_percent,97.5259,%,selected_discovered_papers,parsed_json,
+Quan,bibtex_authors_completeness_percent,99.6029,%,selected_discovered_papers,parsed_json,
+Quan,bibtex_year_completeness_percent,99.09,%,selected_discovered_papers,parsed_json,
+Quan,bibtex_doi_completeness_percent,34.5912,%,selected_discovered_papers,parsed_json,
+Quan,bibtex_journal_completeness_percent,93.5306,%,selected_discovered_papers,parsed_json,
+Quan,bibtex_url_completeness_percent,55.233,%,selected_discovered_papers,parsed_json,
+Quan,mean_parse_seconds_per_paper,0.585,seconds,selected_discovered_papers,parse_manifest,Per-paper worker time; NOT end-to-end wall time under multiprocessing
+Quan,parsing_time_logged_papers,5000,count,selected_discovered_papers,parse_manifest,
+Quan,validation_pass_checks,103314,count,selected_discovered_papers,validation_report_m2.csv,"Count of CHECK RECORDS, not count of publications"
+Quan,validation_warn_checks,1337,count,selected_discovered_papers,validation_report_m2.csv,"Count of CHECK RECORDS, not count of publications"
+Quan,validation_fail_checks,1,count,selected_discovered_papers,validation_report_m2.csv,"Count of CHECK RECORDS, not count of publications"
+Quan,validation_warn_acknowledgements_included,3,count,selected_discovered_papers,validation_report_m2.csv,
+Quan,validation_warn_appendix_included,10,count,selected_discovered_papers,validation_report_m2.csv,
+Quan,validation_fail_bibliography_exclusion,1,count,selected_discovered_papers,validation_report_m2.csv,
+Quan,validation_warn_citation_key_coverage,71,count,selected_discovered_papers,validation_report_m2.csv,
+Quan,validation_warn_empty_tex_tree,3,count,selected_discovered_papers,validation_report_m2.csv,
+Quan,validation_warn_encoding_replacement_chars,3,count,selected_discovered_papers,validation_report_m2.csv,
+Quan,validation_warn_gathering_problems,580,count,selected_discovered_papers,validation_report_m2.csv,
+Quan,validation_warn_nonstandard_leaf_kinds,667,count,selected_discovered_papers,validation_report_m2.csv,
+Quan,elements_parquet_bytes,141825361,bytes,selected_data_root,parquet_files,Measured on disk; may contain more papers than a --limit selection
+Quan,hierarchy_parquet_bytes,11276213,bytes,selected_data_root,parquet_files,Measured on disk; may contain more papers than a --limit selection
+Quan,bibtex_parquet_bytes,21629005,bytes,selected_data_root,parquet_files,Measured on disk; may contain more papers than a --limit selection
