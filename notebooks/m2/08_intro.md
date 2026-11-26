@@ -10,16 +10,19 @@ short_title: "8. Introduction"
 ## 1. Members and responsibilities
 
 As in Milestone 1, each member leads one group of modules. Every module follows a shared interface
-(`src/m2_contract.py`), so the members could work in parallel and the pipeline kept running while other modules
-were not finished.
+(`src/m2_contract.py`), which allowed the modules to be developed in parallel and the pipeline to run before every
+module was complete.
 
 | No. | Full name | Main role | Modules | Chapter |
 | :---: | :--- | :--- | :--- | :--- |
-| 1 | `Phạm Trần Anh Quân` | Member 1 — File gathering & tree building | `gatherer.py`, `hierarchy.py`, `pipeline_m2.py`, `m2_contract.py` | [Chapter 9](./09_parsing.ipynb) |
-| 2 | `Lê Phạm Minh Thu` | Member 2 — Content standardization | `cleaner.py`, `normalizer.py`, `sentence_splitter.py`, `leaf_extractor.py`, `latex_scan.py` | [Chapter 10](./10_standardization.ipynb) |
-| 3 | `Lương Gia Bảo` | Member 3 — References & BibTeX | `reference_parser/` (`bibitem_parser`, `bibtex_converter`, `dedup_bibtex`, `citation_updater`), `fetch_bbl.py` | [Chapter 11](./11_references.ipynb) |
-| 4 | `Trần Thị Ngọc Trâm` | Member 4 — Element IDs, validation & performance | `dedup_elements.py`, `validate_m2.py`, `statistics_m2.py`, `benchmark_m2.py`, `group_benchmark_m2.py` | [Chapters 12](./12_results.ipynb)–[14](./14_validation.ipynb) |
-| 5 | `Nguyễn Thành Phát` | Member 5 — Jupyter Book & documentation | this part of the book, `export_report_data_m2.py`, `README.md` | the whole part |
+| 1 | Phạm Trần Anh Quân | Member 1 — File gathering & tree building | `gatherer.py`, `hierarchy.py`, `pipeline_m2.py`, `m2_contract.py` | [Chapter 9](./09_parsing.ipynb) |
+| 2 | Lê Phạm Minh Thu | Member 2 — Content standardization | `cleaner.py`, `normalizer.py`, `sentence_splitter.py`, `leaf_extractor.py`, `latex_scan.py` | [Chapter 10](./10_standardization.ipynb) |
+| 3 | Lương Gia Bảo | Member 3 — References & BibTeX | `reference_parser/` (`bibitem_parser`, `bibtex_converter`, `dedup_bibtex`, `citation_updater`), `fetch_bbl.py` | [Chapter 11](./11_references.ipynb) |
+| 4 | Trần Thị Ngọc Trâm | Member 4 — Element IDs, validation & performance | `dedup_elements.py`, `validate_m2.py`, `statistics_m2.py`, `benchmark_m2.py`, `group_benchmark_m2.py` | [Chapters 12](./12_results.ipynb)–[14](./14_validation.ipynb) |
+| 5 | Nguyễn Thành Phát | Member 5 — Jupyter Book & documentation | this part of the book, `export_report_data_m2.py`, `README.md` | the whole part |
+
+As in Milestone 1, the tables and figures label each of the five ID ranges with the first name of the member it was
+assigned to (Quan, Bao, Phat, Thu, Tram), and call it a *range*.
 
 ## 2. Objectives
 

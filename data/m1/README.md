@@ -33,6 +33,6 @@ python tools/m1_extras.py <benchmark_ms1_main> --out data/m1
 
 | File | Content |
 | :--- | :--- |
-| `manual_checks.csv` | Versions without a source checked by hand on `arxiv.org/abs`: 404 versions (withdrawn) and `failed` versions (HTML source) |
+| `manual_checks.csv` | Versions without a source reviewed on `arxiv.org/abs`: 404 versions (withdrawn) and `failed` versions (HTML submissions, one PDF) |
 | `download_routes.csv` | Per member and route (Colab, WARP, Webshare): rows of `download_log.csv` and route pauses in `arxiv_throttle_log.csv` |
 | `snapshot_log.csv` | Every snapshot save and restore (outside the crawler's wall time) |

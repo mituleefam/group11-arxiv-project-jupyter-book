@@ -24,18 +24,20 @@ The numbers are in [Chapter 12](./12_results.ipynb) (parsing success rate, befor
 
 ## 2. Remaining limitations
 
-The full list is in [Chapter 14](./14_validation.ipynb). In short:
+The full list is in [Chapter 14](./14_validation.ipynb). In summary:
 
 - Missing source files (an included file, a `.bib` or a `.bbl` absent from the arXiv package) cannot be read.
 - Fields of free-form `\bibitem` entries are extracted by rules and can be wrong for unusual formats.
+- In at least 16 papers the reference list uses a form that the parser does not recognize and remains in the tree; 81
+  papers type their references by hand and yield no BibTeX entry.
 - Paper 2605.16616 reprints `.bbl` code in a figure and an appendix: the `bibliography_exclusion` check gives a false
   positive and the `bibtex` table has one extra entry, which Milestone 3 drops when loading the data.
 
 ## 3. Towards Milestone 3
 
-- The **`bibtex`** table is the "citations in the paper" side of the reference-matching task; `references.json` of
-  Milestone 1 (Semantic Scholar, with arXiv IDs) is the "answer" side. Milestone 3 matches each BibTeX entry with its
-  arXiv ID.
+- The **`bibtex`** table provides the entries cited by each paper, and `references.json` of Milestone 1 (Semantic
+  Scholar, with arXiv IDs) provides the candidate references. Milestone 3 matches each BibTeX entry with the arXiv ID
+  of the reference it denotes.
 - The `title`, `authors` and `year` fields standardized in Milestone 2 are the basis of the matching features; DOIs
   and arXiv IDs, when present, allow automatic labelling.
 - The three tables `elements`, `hierarchy` and `bibtex` are uploaded to Hugging Face with the other tables of the

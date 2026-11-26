@@ -5,7 +5,7 @@ aggregated tables (counts, sizes, statuses, timings), no sentences, formulas or 
 is committed to the book repository. Without `meta.json`, the Milestone 2 chapters still build and say there is no
 data yet.
 
-Regenerate it with the code repository's script, once `src/benchmark_colab_m2.ipynb` has run its sections 8–11 (all
+Regenerate it with the code repository's script, once `src/notebooks/m2_benchmark_colab.ipynb` has run its sections 8–11 (all
 five ranges parsed, validated, counted and merged). On Colab, with Google Drive mounted:
 
 ```bash

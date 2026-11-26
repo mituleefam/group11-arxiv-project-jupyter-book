@@ -12,13 +12,13 @@ short_title: "1. Introduction"
 
 The group has **five members**, each leading one module of the shared pipeline. The assigned arXiv ID ranges of all five members were **crawled one after another in a single run** with the same code on Google Colab, and the data of each range is kept in a separate folder.
 
-| No. | Full name | Main Role | Modules |
-| :---: | :--- | :---: | :--- | :--- |
-| 1 | `Phạm Trần Anh Quân` | Member 1 — Entry Discovery & Metadata | `discovery.py`, `metadata.py`, `main.py` |
-| 2 | `Lương Gia Bảo` | Member 2 — Source Downloader & Extraction | `downloader.py`, `extractor.py`, `checkpoint.py`, `rate_limiter.py` |
-| 3 | `Nguyễn Thành Phát` | Member 3 — References Crawling | `references.py`, `ref_dates_kaggle.py` |
-| 4 | `Trần Thị Ngọc Trâm` | Member 4 — Data Validation & Performance | `validate.py`, `corpus_statistics.py`, `benchmark.py`, `group_benchmark.py` |
-| 5 | `Lê Phạm Minh Thu` | Member 5 — Jupyter Book & Documentation | Jupyter Book repository, `README.md` |
+| No. | Full name | Main role | Modules |
+| :---: | :--- | :--- | :--- |
+| 1 | Phạm Trần Anh Quân | Member 1 — Entry discovery & metadata | `discovery.py`, `metadata.py`, `main.py` |
+| 2 | Lương Gia Bảo | Member 2 — Source download & extraction | `downloader.py`, `extractor.py`, `checkpoint.py`, `rate_limiter.py` |
+| 3 | Nguyễn Thành Phát | Member 3 — Reference crawling | `references.py`, `ref_dates_kaggle.py` |
+| 4 | Trần Thị Ngọc Trâm | Member 4 — Data validation & performance | `validate.py`, `corpus_statistics.py`, `benchmark.py`, `group_benchmark.py` |
+| 5 | Lê Phạm Minh Thu | Member 5 — Jupyter Book & documentation | Jupyter Book repository, `README.md` |
 
 In the tables and figures, each ID range is labelled with the first name of the member assigned to it (Quan, Bao, Phat, Thu, Tram). The actual range of each member (first ID, last ID, number of IDs) is read from the crawl data and presented automatically in [Chapter 3](./03_data_organization.ipynb).
 

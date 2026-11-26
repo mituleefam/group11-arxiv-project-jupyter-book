@@ -34,6 +34,6 @@ Run `src/export_report_data.py` of the code repository on the data folders of al
 to `data/m1/` of this repository; then run `tools/m1_extras.py` on the benchmark folder, and commit `data/m1/`.
 See `data/m1/README.md`.
 
-Milestone 2: after `src/benchmark_colab_m2.ipynb` has parsed all five ranges and merged the tables, run
+Milestone 2: after `src/notebooks/m2_benchmark_colab.ipynb` has parsed all five ranges and merged the tables, run
 `src/export_report_data_m2.py --results <g11_m2_benchmark> --out <this repository>/data/m2` and commit `data/m2/`.
 See `data/m2/README.md`. Until `data/m2/` exists, the Milestone 2 chapters still build and say there is no data yet.

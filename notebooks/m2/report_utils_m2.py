@@ -16,7 +16,7 @@ from functools import lru_cache
 from pathlib import Path
 
 import pandas as pd
-from IPython.display import HTML, Markdown, display
+from IPython.display import HTML, display
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # notebooks/report_utils.py of Milestone 1
 from report_utils import COLORS, human_bytes, human_seconds, pct, show, table  # noqa: E402,F401
@@ -25,15 +25,10 @@ ORDER = ["Quan", "Bao", "Phat", "Thu", "Tram"]  # same order as Milestone 1
 KIND_LABELS = {"document": "Version root", "heading": "Heading", "paragraph": "\\paragraph",
                "list": "List", "item": "List item", "sentence": "Sentence", "formula": "Formula",
                "figure": "Figure / table"}
-# export_report_data_m2.py labels gathering problems in Vietnamese; the book shows them in English
+# export_report_data_m2.py groups gatherer.py's messages by keyword; these labels say what the messages mean
 PROBLEM_LABELS = {
-    "Không có TeX (theo M1)": "No TeX (Milestone 1)",
-    "File được nhắc tới nhưng không có": "Included file missing from the source",
-    "Không xác định được file gốc": "Root file not determined",
-    "Vòng lặp \\input": "\\input cycle",
-    "Lỗi mã hoá ký tự": "Character encoding error",
-    "Bị cắt bởi \\endinput": "Cut by \\endinput",
-    "Khác": "Other",
+    "Root file not determined": "Several root candidates, or a guessed root file",
+    "Character encoding error": "File not in UTF-8, read as Latin-1",
 }
 ID_COLUMNS = {c: str for c in ("arxiv_id", "run_id")}  # 2601.18060 must not lose its last zero
 
@@ -52,9 +47,11 @@ def ready() -> bool:
     if data_dir() is not None:
         provenance()
         return True
-    display(Markdown(
-        "> **No data yet.** `data/m2/` has not been exported. The tables and figures of this chapter appear "
-        "once the group runs `src/export_report_data_m2.py` on the Milestone 2 results and commits `data/m2/`."))
+    # HTML rather than Markdown: MyST shows a Markdown output as raw text
+    display(HTML(
+        "<blockquote><p><strong>No data yet.</strong> <code>data/m2/</code> has not been exported. The tables and "
+        "figures of this chapter appear once the group runs <code>src/export_report_data_m2.py</code> on the "
+        "Milestone 2 results and commits <code>data/m2/</code>.</p></blockquote>"))
     return False
 
 

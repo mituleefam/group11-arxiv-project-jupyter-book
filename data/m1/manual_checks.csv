@@ -136,4 +136,4 @@ Tram,2512.03117,v3,not_found,withdrawn,The Submission history on the abstract pa
 Bao,2604.05737,v1,failed,html_source,"Access Paper offers HTML and HTML Source, no TeX Source: EPTCS 444 proceedings submitted as HTML",2026-11-19
 Bao,2604.08605,v1,failed,html_source,"Access Paper offers HTML and HTML Source, no TeX Source: workshop proceedings submitted as HTML",2026-11-19
 Phat,2601.14107,v1,failed,html_source,"Access Paper offers HTML and HTML Source, no TeX Source: ICRC2025 contributions submitted as HTML",2026-11-19
-Phat,2601.17022,v1,failed,html_source,"Access Paper offers View PDF only, no TeX Source: the source stored by arXiv is a 999 KB gzipped HTML file",2026-11-19
+Phat,2601.17022,v1,failed,pdf_source,"Access Paper offers View PDF only, no TeX Source: a PDF whose %PDF header follows two spaces",2026-11-19

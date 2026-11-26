@@ -4,9 +4,9 @@ They come from the benchmark folder of the group's final Milestone 1 run
 (benchmark_ms1_main/, one sub-folder per member with snapshots/*.tar.gz and
 snapshot_log.csv, plus tong_ket/verified_404_withdrawn.csv):
 
-  manual_checks.csv    versions without a source that were checked by hand on
+  manual_checks.csv    versions without a source that were reviewed on
                        arxiv.org/abs: the 134 HTTP 404 versions (all withdrawn)
-                       and the 4 versions left `failed` (HTML sources)
+                       and the 4 versions left `failed` (3 HTML submissions, 1 PDF)
   download_routes.csv  per member and route (Colab, WARP, Webshare): rows of
                        logs/download_log.csv and route pauses of
                        logs/arxiv_throttle_log.csv
@@ -30,14 +30,15 @@ from pathlib import Path
 
 CHECKED_ON = "2026-11-19"
 
-# The 4 versions the crawler left `failed` ("gzip file holds an HTML page"):
-# arXiv answered HTTP 200 with the same gzipped HTML file on each of 22 tries.
-# Their abs pages show the source is HTML, not TeX.
-HTML_SOURCES = {
-    ("2604.05737", "v1"): "Access Paper offers HTML and HTML Source, no TeX Source: EPTCS 444 proceedings submitted as HTML",
-    ("2604.08605", "v1"): "Access Paper offers HTML and HTML Source, no TeX Source: workshop proceedings submitted as HTML",
-    ("2601.14107", "v1"): "Access Paper offers HTML and HTML Source, no TeX Source: ICRC2025 contributions submitted as HTML",
-    ("2601.17022", "v1"): "Access Paper offers View PDF only, no TeX Source: the source stored by arXiv is a 999 KB gzipped HTML file",
+# The 4 versions the crawler left `failed`: arXiv answered HTTP 200 with a file of
+# the same size on each of 22 tries. download_log.csv gives the reason ("gzip file
+# holds an HTML page" for three, "unrecognised file format (first bytes b'  %PDF-1')"
+# for one); the abs pages show that none has a TeX source.
+FAILED_SOURCES = {
+    ("2604.05737", "v1"): ("html_source", "Access Paper offers HTML and HTML Source, no TeX Source: EPTCS 444 proceedings submitted as HTML"),
+    ("2604.08605", "v1"): ("html_source", "Access Paper offers HTML and HTML Source, no TeX Source: workshop proceedings submitted as HTML"),
+    ("2601.14107", "v1"): ("html_source", "Access Paper offers HTML and HTML Source, no TeX Source: ICRC2025 contributions submitted as HTML"),
+    ("2601.17022", "v1"): ("pdf_source", "Access Paper offers View PDF only, no TeX Source: a PDF whose %PDF header follows two spaces"),
 }
 WITHDRAWN_EVIDENCE = "The Submission history on the abstract page marks this version as (withdrawn)"
 
@@ -86,9 +87,9 @@ def main() -> None:
         with report.open(encoding="utf-8-sig", newline="") as stream:
             failed = {(r["arxiv_id"], r["version"]) for r in csv.DictReader(stream)
                       if "failed" in (r.get("error_message") or "")}
-        for key, evidence in HTML_SOURCES.items():
+        for key, (finding, evidence) in FAILED_SOURCES.items():
             if key in failed:
-                rows.append([member_of(folder), *key, "failed", "html_source", evidence, CHECKED_ON])
+                rows.append([member_of(folder), *key, "failed", finding, evidence, CHECKED_ON])
     with (args.out / "manual_checks.csv").open("w", encoding="utf-8", newline="") as stream:
         writer = csv.writer(stream)
         writer.writerow(["member", "arxiv_id", "version", "crawl_status", "finding", "evidence", "checked_on"])

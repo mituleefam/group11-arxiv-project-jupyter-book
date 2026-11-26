@@ -19,7 +19,7 @@ The concrete figures (papers crawled successfully, success rate, size before and
 
 The complete list, with the count of each case, is given in [Chapter 6](./06_errors_limitations.ipynb). In summary:
 
-- Some versions have no TeX source: withdrawn versions (arXiv answers HTTP 404; every case was checked by hand and confirmed as withdrawn), PDF-only versions, and a few HTML submissions. These versions are recorded, not skipped. The HTML submissions remain in the `failed` state because `extractor.py` treats every HTML file as a server error page.
+- Some versions have no TeX source: withdrawn versions (arXiv answers HTTP 404; every case was reviewed and confirmed as withdrawn), PDF-only versions, and a few HTML submissions. These versions are recorded, not skipped. The HTML submissions and one PDF with an irregular header remain in the `failed` state because `extractor.py` does not recognize them.
 - Semantic Scholar has not yet indexed some recent papers, and for a few others it lists references without sharing them. Reference metadata is therefore limited to what Semantic Scholar provides.
 - The ID ranges were crawled one after another on a single Colab runtime. Because of the 12-hour limit, the run spanned several sessions and resumed from snapshots, so the running time is reported per step (invocation) and summed, rather than as one continuous run. The parts outside this sum (snapshot saving and restoring, a step interrupted by a runtime failure) are measured separately in [Chapter 5](./05_performance.ipynb).
 
